@@ -1,0 +1,43 @@
+:root{color-scheme:dark;--bg:#10121b;--panel:#191d2b;--line:#2b3042;--muted:#9ba3b7;--purple:#7769ed;--green:#67dfae}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:#f4f5fa;font-family:Tahoma,Arial,sans-serif}
+button,input,select{font:inherit}
+button{cursor:pointer}
+.header{height:68px;background:#171a26;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 max(18px,calc((100% - 1050px)/2));position:sticky;top:0;z-index:5}
+.brand{font-size:22px;font-weight:bold;color:#a99fff;text-decoration:none}.brand span{color:white}
+.header-right{display:flex;align-items:center;gap:12px}.balance{background:#292744;color:#c1b9ff;padding:10px 13px;border-radius:11px;white-space:nowrap}.large{font-size:17px}
+.container{max-width:1050px;margin:auto;padding:28px 18px 80px}
+.hidden{display:none!important}
+.muted,.hint{color:var(--muted);font-size:13px;line-height:1.8}
+.auth-wrap{max-width:850px;margin:30px auto;display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center}
+.intro h1{font-size:32px}.intro p{color:var(--muted);line-height:2}
+.logo-mark{width:65px;height:65px;display:grid;place-items:center;background:#302c5a;border:1px solid #5c52a3;border-radius:20px;color:#c4bcff;font-size:24px;font-weight:bold}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:17px;padding:21px;margin-bottom:18px}
+.auth-panel{padding:22px}
+.auth-tabs,.tabs{display:flex;gap:8px;overflow-x:auto;margin-bottom:19px}
+.auth-tab,.tab{border:0;background:#24283a;color:#aeb4c5;padding:12px 16px;border-radius:10px;white-space:nowrap}
+.auth-tab.active,.tab.active{background:var(--purple);color:white}
+label{display:block;color:#c7cada;font-size:13px;margin:13px 0 7px}
+input,select{width:100%;background:#111521;color:white;border:1px solid #373d51;padding:13px;border-radius:10px;outline:none}
+input:focus,select:focus{border-color:#9388ff}
+.primary,.secondary,.ghost{border:0;padding:12px 16px;border-radius:10px;font-weight:bold}
+.primary{background:var(--purple);color:white}.primary:hover{background:#897df5}
+.full{width:100%;margin-top:17px}
+.secondary{background:#2b3045;color:#d1ccff}
+.ghost{background:#252a3b;color:#ddd}
+.message{min-height:22px;color:#ffb6a8;font-size:13px;line-height:1.8}
+.welcome,.section-heading{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:20px}
+h1,h2{margin:0 0 8px}h1{font-size:25px}h2{font-size:18px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin:20px 0}
+.stat{background:var(--panel);border:1px solid var(--line);padding:17px;border-radius:14px}
+.stat small,.profile-grid small{display:block;color:var(--muted);font-size:12px}
+.stat strong{display:block;font-size:25px;margin-top:9px;color:#b3aaff}
+.page{display:block}.list{display:grid;gap:10px}
+.item{background:#202536;border:1px solid #30364a;border-radius:13px;padding:14px;display:flex;align-items:center;gap:13px;justify-content:space-between;flex-wrap:wrap}
+.item-main{flex:1;min-width:150px}.item-main b{display:block;direction:ltr;text-align:right;overflow-wrap:anywhere}.item-main small{color:var(--muted);font-size:12px}
+.item-actions{display:flex;gap:7px;flex-wrap:wrap}.item-actions button{font-size:12px;padding:9px 12px;border-radius:9px;border:0}
+.task-link{background:#4e46a9;color:white}.claim{background:#254b3c;color:#8bf0c2}
+.notice{background:#29263d;border:1px solid #49416f;color:#c9c1ff;padding:13px;border-radius:11px;font-size:12px;line-height:1.9;margin-top:15px}
+.profile-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;padding-top:12px}.profile-grid b{display:block;margin-top:7px;overflow-wrap:anywhere}
+.empty{padding:28px;text-align:center;color:var(--muted);background:#202536;border-radius:12px}
+@media(max-width:650px){.auth-wrap{grid-template-columns:1fr;margin:5px auto;gap:15px}.intro h1{font-size:25px}.intro p{margin-bottom:10px}.stats{gap:8px}.stat{padding:13px 10px}.stat strong{font-size:21px}.stat small{font-size:11px}.welcome{align-items:flex-start;flex-direction:column}.header-right .muted{display:none}.container{padding-top:20px}}
