@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#10121b">
+<title>Followers+ | تبادل المتابعين</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="header">
+  <a class="brand" href="#">Followers<span>+</span></a>
+  <div class="header-right">
+    <span id="headerUser" class="muted"></span>
+    <span class="balance">🪙 <b id="headerPoints">0</b></span>
+    <button id="logoutBtn" class="ghost hidden">خروج</button>
+  </div>
+</header>
+
+<main class="container">
+  <section id="authView" class="auth-wrap">
+    <div class="intro">
+      <div class="logo-mark">F+</div>
+      <h1>كبّر حضورك الرقمي</h1>
+      <p>تابع الحسابات، أرسل طلب إنجاز، واجمع النقاط لتروّج لحسابك.</p>
+    </div>
+    <div class="panel auth-panel">
+      <div class="auth-tabs">
+        <button class="auth-tab active" data-auth="login">تسجيل الدخول</button>
+        <button class="auth-tab" data-auth="register">إنشاء حساب</button>
+      </div>
+      <form id="loginForm">
+        <label>البريد أو اسم المستخدم</label>
+        <input name="identity" required maxlength="254" autocomplete="username" placeholder="name@example.com">
+        <label>كلمة المرور</label>
+        <input name="password" type="password" required autocomplete="current-password" placeholder="كلمة المرور">
+        <button class="primary full">دخول إلى حسابي</button>
+      </form>
+      <form id="registerForm" class="hidden">
+        <label>الاسم</label>
+        <input name="name" required minlength="2" maxlength="70" placeholder="اسمك">
+        <label>اسم المستخدم داخل الموقع</label>
+        <input name="username" required minlength="3" maxlength="24" pattern="[A-Za-z0-9_.-]+" placeholder="your_name">
+        <small class="hint">3–24 حرفاً إنجليزياً أو أرقام أو _ أو . أو -</small>
+        <label>البريد الإلكتروني</label>
+        <input name="email" type="email" required maxlength="254" autocomplete="email" placeholder="name@example.com">
+        <label>كلمة المرور</label>
+        <input name="password" type="password" required minlength="8" maxlength="72" autocomplete="new-password" placeholder="8 أحرف على الأقل">
+        <button class="primary full">إنشاء الحساب</button>
+      </form>
+      <p id="authMessage" class="message" role="status"></p>
+    </div>
+  </section>
+
+  <section id="appView" class="hidden">
+    <div class="welcome">
+      <div><h1>أهلاً <span id="welcomeName"></span> 👋</h1><p class="muted">رصيدك ومهامك محفوظة في قاعدة البيانات.</p></div>
+      <span class="balance large">🪙 <b id="mainPoints">0</b> نقطة</span>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><small>رصيد النقاط</small><strong id="statPoints">0</strong></div>
+      <div class="stat"><small>حساباتك</small><strong id="statAccounts">0</strong></div>
+      <div class="stat"><small>طلباتك المرسلة</small><strong id="statClaims">0</strong></div>
+    </div>
+
+    <nav class="tabs">
+      <button class="tab active" data-page="tasks">اكسب نقاط</button>
+      <button class="tab" data-page="promote">روّج لحسابك</button>
+      <button class="tab" data-page="account">حسابي</button>
+      <button class="tab admin-only hidden" data-page="admin">المسؤول</button>
+    </nav>
+
+    <section class="page active" id="page-tasks">
+      <div class="section-heading"><div><h2>مهام المتابعة</h2><p class="muted">افتح الحساب، تابع يدوياً، ثم أرسل طلب المراجعة.</p></div><button class="secondary" id="refreshTasks">تحديث</button></div>
+      <div id="tasksList" class="list"></div>
+      <div class="notice">الموقع لا يستطيع التأكد آلياً من حدوث متابعة على منصات خارجية. لذلك تُرسل المهمة للمراجعة، ولا تُضاف النقاط إلا بعد اعتماد المسؤول.</div>
+    </section>
+
+    <section class="page hidden" id="page-promote">
+      <div class="panel">
+        <h2>أضف حسابك الاجتماعي</h2>
+        <p class="muted">أدخل اليوزر العام فقط. لا تدخل كلمة المرور أو بيانات الدخول لمنصتك.</p>
+        <form id="accountForm">
+          <label>المنصة</label>
+          <select name="platform"><option value="instagram">Instagram</option><option value="tiktok">TikTok</option><option value="x">X</option><option value="youtube">YouTube</option></select>
+          <label>اسم المستخدم في المنصة</label>
+          <input name="social_username" required maxlength="40" placeholder="username">
+          <button class="primary">إضافة الحساب</button>
+        </form>
+      </div>
+      <div class="panel">
+        <div class="section-heading"><div><h2>حساباتي</h2><p class="muted">أنشئ حملة ترويج مقابل 30 نقطة.</p></div></div>
+        <div id="myAccounts" class="list"></div>
+      </div>
+    </section>
+
+    <section class="page hidden" id="page-account">
+      <div class="panel">
+        <h2>بيانات الحساب</h2>
+        <div class="profile-grid">
+          <div><small>الاسم</small><b id="profileName"></b></div>
+          <div><small>اسم المستخدم</small><b id="profileUsername"></b></div>
+          <div><small>البريد الإلكتروني</small><b id="profileEmail"></b></div>
+          <div><small>عدد النقاط</small><b id="profilePoints"></b></div>
+        </div>
+      </div>
+      <div class="panel"><h2>سجل النقاط</h2><div id="historyList" class="list"></div></div>
+    </section>
+
+    <section class="page hidden" id="page-admin">
+      <div class="panel">
+        <h2>طلبات المهام المعلقة</h2>
+        <p class="muted">راجع الطلبات يدوياً قبل اعتماد النقاط.</p>
+        <div id="adminClaims" class="list"></div>
+      </div>
+      <div class="panel">
+        <h2>إحصائيات الموقع</h2>
+        <div id="adminSummary" class="profile-grid"></div>
+      </div>
+    </section>
+    <p id="appMessage" class="message" role="status"></p>
+  </section>
+</main>
+<script src="/app.js" defer></script>
+</body>
+</html>
